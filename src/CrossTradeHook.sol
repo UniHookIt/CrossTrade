@@ -83,8 +83,8 @@ contract CrossTradeHook is BaseHook {
         uint256 estimatedPrice =
             params.zeroForOne ? (amountOut * 1e18) / amountIn : (amountIn * 1e18) / (amountOut * 1e12);
 
-        uint256 requiredPrice = data.tokenPrice * (10000 + data.slippage) / 10000; // e.g., 10% higher
-        if (estimatedPrice < requiredPrice) {
+        uint256 requiredPrice = (data.tokenPrice * (1000000 - fee)) / 1000000;
+        if (estimatedPrice > requiredPrice) {
             revert UnprofitableSwap();
         }
 
