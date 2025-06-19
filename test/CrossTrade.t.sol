@@ -27,10 +27,21 @@ import "forge-std/console.sol";
 
 contract CrossTradeHookTest is Test, Deployers {
     CrossTradeHook hook;
+    MockERC20 usdc;
+    address constant NATIVE_ETH = address(0);
+    address usdcAddress;
 
     function setUp() public {
         deployFreshManagerAndRouters();
-        deployMintAndApprove2Currencies();
+        
+
+        usdc = new MockERC20("USDC", "USDC", 6);
+        usdcAddress = address(usdc);
+
+
+        usdc.mint(address(this), 1_000_000 * 10**18);
+        usdc.approve(address(swapRouter), type(uint256).max);
+        usdc.approve(address(modifyLiquidityRouter), type(uint256).max);
 
         uint160 flags = uint160(Hooks.BEFORE_SWAP_FLAG);
         
@@ -40,14 +51,15 @@ contract CrossTradeHookTest is Test, Deployers {
         hook = CrossTradeHook(address(flags));
 
         (key,) = initPool(
-            currency0,
-            currency1,
+            Currency.wrap(NATIVE_ETH),
+            Currency.wrap(usdcAddress),
             hook,
             LPFeeLibrary.DYNAMIC_FEE_FLAG, // Set the `DYNAMIC_FEE_FLAG` in place of specifying a fixed fee
             SQRT_PRICE_1_1
         );
 
-        modifyLiquidityRouter.modifyLiquidity(
+        usdc.mint(address(this), 250_000 * 10**6);
+        modifyLiquidityRouter.modifyLiquidity{value: 100 ether}(
             key,
             ModifyLiquidityParams({tickLower: -60, tickUpper: 60, liquidityDelta: 100 ether, salt: bytes32(0)}),
             ZERO_BYTES
@@ -62,5 +74,5 @@ contract CrossTradeHookTest is Test, Deployers {
         assertEq(gasPrice, 10 gwei, "Gas price should match tx.gasprice");
     }
 
-    
+
 }
