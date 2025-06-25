@@ -1,0 +1,6 @@
+[submodule "crosstrade-hook/lib/v4-periphery"]
+	path = crosstrade-hook/lib/v4-periphery
+	url = https://github.com/Uniswap/v4-periphery
+[submodule "crosstrade-hook/lib/forge-std"]
+	path = crosstrade-hook/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
