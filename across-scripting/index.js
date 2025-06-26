@@ -39,7 +39,7 @@ async function dynamicBridgeExample() {
     //   tokenSymbol: 'USDC',
     //   originChainId: 84532, // Base Sepolia
     //   destinationChainId: 11155111, // Sepolia
-    //   amount: (8 * 1e6).toString(), // 10 USDC (6 decimals)
+    //   amount: ethers.parseUnits('8.5', 6).toString(), // 10 USDC (6 decimals)
     //   recipient: USER_WALLET_ADDRESS 
     // };
 

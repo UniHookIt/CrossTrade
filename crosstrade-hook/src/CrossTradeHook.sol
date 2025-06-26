@@ -46,8 +46,8 @@ contract CrossTradeHook is BaseHook {
         });
     }
 
-    // Monitor token prices across chains here to check for profitable arbitrage oppurtunities
-    // If profitable trade is detected initiate a bridge to the target chain
+    // Monitor token prices across chains to check for profitable arbitrage oppurtunities
+    // If profitable trade is detected initiate a bridge using across to the target chain
     // Execute the swap on the destination chain for maximizing arbitrage oppurtunities
 
     function getCurrentGasPrice() public view returns (uint256 gasPrice) {
