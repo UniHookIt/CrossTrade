@@ -1,3 +1,6 @@
+<!-- ![Alt logo](./crosstrade.jpg) -->
+<img src="./crosstrade.jpg" alt="Diagram" width="150" height="150">
+
 # CrossTrade 
 
 A dynamic arbitrage hook that leverages Chainlink oracles to find optimal ETH/USDC prices across Ethereum, Optimism, Arbitrum, and Base networks, enabling intelligent cross-chain bridging decisions.
