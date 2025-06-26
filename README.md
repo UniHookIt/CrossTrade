@@ -1,5 +1,5 @@
 
-# CrossTrade-1
+# CrossTrade
 
 A cross-chain arbitrage and bridging toolkit, featuring:
 
