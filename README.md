@@ -1,5 +1,5 @@
 <!-- ![Alt logo](./crosstrade.jpg) -->
-<img src="./crosstrade.jpg" alt="Diagram" width="150" height="150">
+<img src="./crosstrade.jpg" alt="Logo" width="150" height="150">
 
 # CrossTrade 
 
